@@ -1,12 +1,12 @@
 MEMORY
 {
-	ROM (rx) :  ORIGIN = 0x102DB040, LENGTH = 0x00050000
+	ROM (rx) :  ORIGIN = 0x1030D040, LENGTH = 0x00046000
 	RAM (rwx) : ORIGIN = 0xf03D2000, LENGTH = 0x00019000
 }
 
 SECTIONS
 {
-    . = 0x102DB040;
+    . = 0x1030D040;
 	.initdata : ALIGN(4)
 	{ 
 		KEEP(*(.initdata));
@@ -30,7 +30,7 @@ SECTIONS
 	.bss : ALIGN(8)
 	{
 		PROVIDE_HIDDEN (__bss_start__ = .);
-		*(.bss)
+		*(.bss) *(COMMON)
 		. = ALIGN (8);
 		PROVIDE_HIDDEN (__bss_end__ = .);
 	} > RAM
